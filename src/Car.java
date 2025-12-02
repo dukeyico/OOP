@@ -7,9 +7,17 @@ public class Car {
     String model;
     int year;
 
-    //Default Constructor
-    public Car(){
-        System.out.println("Car class created.");
+//    //Default Constructor
+//    public Car(){
+//        System.out.println("Car class created.");
+//    }
+
+    //Parameterized constructor
+    public Car(String myColor, String myModel, int theYear){
+        System.out.println(myModel + " created," + " Color: " + myColor + ", Year: " + theYear);
+        this.color = myColor;
+        this.model = myModel;
+        this.year = theYear;
     }
 
     // Creating a member method
