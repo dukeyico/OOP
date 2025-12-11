@@ -8,13 +8,29 @@ public class Question {
     private char operator;
     private double correctAnswer;
 
-    // Constructor
+    // Default Constructor
     public Question(){
+
+    }
+
+    public void generateLevel(String level){
         Random rand = new Random();
-        this.question1 = rand.nextInt(100) + 1;
-        this.question2 = rand.nextInt(100) + 1;
         char[] operators = {'+', '-', '*', '/'};
         this.operator = operators[rand.nextInt(operators.length)];
+        switch (level.toLowerCase()){
+            case "easy" ->{
+                question1 = rand.nextInt(10) + 1;
+                question2 = rand.nextInt(10) + 1;
+            }
+            case "medium" ->{
+                question1 = rand.nextInt(11, 50);
+                question2 = rand.nextInt(11,50);
+            }
+            case "hard" ->{
+                question1 = rand.nextInt(50,101);
+                question2 = rand.nextInt(50,101);
+            }
+        }
         calculateAnswer();
     }
 
@@ -24,12 +40,7 @@ public class Question {
                 correctAnswer = question1 + question2;
                 break;
             case '-':
-                if(question1 > question2){
-                    correctAnswer = question1 - question2;
-                }
-                else{
-                    correctAnswer = question2 - question1;
-                }
+                correctAnswer = question1 - question2;
                 break;
             case '*':
                 correctAnswer = question1 * question2;
